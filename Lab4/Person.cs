@@ -51,14 +51,13 @@ namespace Lab4
                 throw new NullReferenceException("Other Person must not be null");
             }
 
-
             // compute distance between first letters of first name
 
             char c = char.ToLower(this.FirstName[0]);
             char d = char.ToLower(other.FirstName[0]);
 
             int difference = Math.Abs( c - d );
-
+            Console.WriteLine( difference );
 
             return difference;
         }

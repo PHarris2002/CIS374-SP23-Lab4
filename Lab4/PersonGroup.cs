@@ -72,23 +72,26 @@ namespace Lab4
             {
                 if (currentGroup.Count == 0)
                 {
-                    currentGroup.Add(person);
+                    currentGroup.Persons.Add(person);
                 }
 
                 else if (person.Distance(person) <= distance)
                 {
-                    currentGroup.Add(person);
+                    currentGroup.Persons.Add(person);
                 }
 
                 else
                 {
                     personGroups.Add(currentGroup);
-                    var newGroup = new List<Person>();
-                    newGroup.Add(person);
+
+                    var newGroup = new List<Person>
+                    {
+                        person
+                    };
+
                     GeneratePersonGroups(newGroup, distance);
                 }
             }
-
 
             return personGroups;
         }
