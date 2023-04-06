@@ -72,7 +72,7 @@ namespace Lab4
             {
                 if (char.Parse(entry.Value) == c)
                 {
-                    zcValue = entry.Key;
+                    cValue = entry.Key;
                     break;
                 }
 
