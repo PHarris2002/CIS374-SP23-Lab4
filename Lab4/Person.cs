@@ -53,10 +53,43 @@ namespace Lab4
 
             // compute distance between first letters of first name
 
+            string alphabetString = "abcdefghijklmnopqrstuvwxyz";
+            IDictionary<int, string> alphabetAndNumber = new Dictionary<int, string>();
+            int count = 0;
+            int cValue = 0;
+            int dValue = 0;
+
+            foreach (var character in alphabetString)
+            {
+                alphabetAndNumber.Add(count, $"{character}");
+                count++;
+            }
+
             char c = char.ToLower(this.FirstName[0]);
             char d = char.ToLower(other.FirstName[0]);
 
-            int difference = Math.Abs( c - d );
+            foreach (var entry in alphabetAndNumber)
+            {
+                if (char.Parse(entry.Value) == c)
+                {
+                    zcValue = entry.Key;
+                    break;
+                }
+
+            }
+
+            foreach (var entry in alphabetAndNumber)
+            {
+                if (char.Parse(entry.Value) == d)
+                {
+                    dValue = entry.Key;
+                    break;
+                }
+
+            }
+
+            int difference = Math.Abs( cValue - dValue );
+            Console.WriteLine(difference);
 
 
             return difference;
