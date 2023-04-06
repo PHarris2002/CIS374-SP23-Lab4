@@ -2,7 +2,7 @@
 
 namespace Lab4
 {
-    public class Person: IComparable<Person>
+    public class Person : IComparable<Person>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -14,14 +14,14 @@ namespace Lab4
             LastName = lastName;
         }
 
-        public Person(string firstName, string lastName, DateTime birthday):this(firstName, lastName)
+        public Person(string firstName, string lastName, DateTime birthday) : this(firstName, lastName)
         {
             Birthday = birthday;
         }
 
         public int CompareTo([AllowNull] Person other)
         {
-            if( other == null)
+            if (other == null)
             {
                 throw new NullReferenceException("Other Person must not be null");
             }
@@ -51,14 +51,13 @@ namespace Lab4
                 throw new NullReferenceException("Other Person must not be null");
             }
 
-
             // compute distance between first letters of first name
 
             char c = char.ToLower(this.FirstName[0]);
             char d = char.ToLower(other.FirstName[0]);
 
-            int difference = Math.Abs( c - d );
-
+            int difference = Math.Abs(c - d);
+            Console.WriteLine(difference);
 
             return difference;
         }

@@ -1,9 +1,11 @@
-﻿namespace Lab4;
+﻿using System;
+
+namespace Lab4;
 class Program
 {
     static void Main(string[] args)
     {
-        var kaylee = new Person("Kaylee", "Odom", new DateTime(1, 2, 3) );
+        var kaylee = new Person("Kaylee", "Odom", new DateTime(1, 2, 3));
         var austin = new Person("Austin", "Applegate", new DateTime(1, 2, 3));
         var priscilla = new Person("Priscilla", "Harris", new DateTime(1, 2, 3));
         var kenan = new Person("Kenan", "Casey", new DateTime(1, 2, 3));
@@ -24,9 +26,9 @@ class Program
 
         var personGroups = PersonGroup.GeneratePersonGroups(new List<Person>(persons), 3);
 
-        for(var index =0; index < personGroups.Count; index++)
+        foreach (var group in personGroups)
         {
-            Console.WriteLine( $"Group {index}: " + personGroups[index] );
+            Console.WriteLine(group);
         }
 
     }

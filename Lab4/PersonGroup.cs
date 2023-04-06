@@ -6,15 +6,19 @@ namespace Lab4
     {
         public List<Person> Persons { get; set; } = new List<Person>();
 
-        public char? StartingLetter {
-            get {
+        public char? StartingLetter
+        {
+            get
+            {
                 // if Persons is SORTED
                 return Persons[0].FirstName[0];
             }
         }
 
         // TODO
-        public char? EndingLetter { get 
+        public char? EndingLetter
+        {
+            get
             {
                 return Persons[-1].FirstName[0];
             }
@@ -39,9 +43,9 @@ namespace Lab4
 
         public PersonGroup(List<Person> persons = null)
         {
-            if( persons != null)
+            if (persons != null)
             {
-                foreach(var p in persons)
+                foreach (var p in persons)
                 {
                     Persons.Add(p);
                 }
@@ -52,7 +56,7 @@ namespace Lab4
 
         public override string ToString()
         {
-            return "[" + String.Join(", ", Persons)+ "]";
+            return "[" + String.Join(", ", Persons) + "]";
         }
 
 
@@ -72,23 +76,26 @@ namespace Lab4
             {
                 if (currentGroup.Count == 0)
                 {
-                    currentGroup.Add(person);
+                    currentGroup.Persons.Add(person);
                 }
 
                 else if (person.Distance(person) <= distance)
                 {
-                    currentGroup.Add(person);
+                    currentGroup.Persons.Add(person);
                 }
 
                 else
                 {
                     personGroups.Add(currentGroup);
-                    var newGroup = new List<Person>();
-                    newGroup.Add(person);
+
+                    var newGroup = new List<Person>
+                    {
+                        person
+                    };
+
                     GeneratePersonGroups(newGroup, distance);
                 }
             }
-
 
             return personGroups;
         }
