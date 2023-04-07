@@ -1,5 +1,7 @@
 ﻿
 
+using System.Runtime.InteropServices;
+
 namespace Lab4
 {
     public class PersonGroup
@@ -68,28 +70,43 @@ namespace Lab4
             //sort input list
             persons.Sort();
 
-            // It's is just a sample of how to interact with the classes.
             var currentGroup = new PersonGroup();
+            List<Person> addedPersons = new List<Person>();
+            List<Person> newPersons = new List<Person>();
 
             foreach (var person in persons)
             {
                 if (currentGroup.Count == 0)
                 {
                     currentGroup.Persons.Add(person);
+                    addedPersons.Add(person);
                 }
 
                 else if (person.Distance(currentGroup[0]) <= distance)
                 {
                     currentGroup.Persons.Add(person);
+                    addedPersons.Add(person);
                 }
 
                 else
                 {
                     personGroups.Add(currentGroup);
-                    var newGroup = new List<Person>();
-                    newGroup.Add(person);
+                    addedPersons.Add(person);
 
-                    GeneratePersonGroups(newGroup, distance);
+                    foreach (var p in persons)
+                    {
+                        if (addedPersons.Contains(p) == true)
+                        {
+                            continue;
+                        }
+
+                        else
+                        {
+                            newPersons.Add(p);
+                        }
+                    }
+
+                    GeneratePersonGroups(newPersons, distance);
                 }
             }
 

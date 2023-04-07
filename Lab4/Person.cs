@@ -55,7 +55,6 @@ namespace Lab4
             char d = char.ToLower(other.FirstName[0]);
 
             int difference = Math.Abs( c - d );
-            Console.WriteLine(difference);
 
 
             return difference;
