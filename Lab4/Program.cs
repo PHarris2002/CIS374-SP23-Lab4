@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lab4;
+﻿namespace Lab4;
 class Program
 {
     static void Main(string[] args)
@@ -26,11 +24,10 @@ class Program
 
         var personGroups = PersonGroup.GeneratePersonGroups(new List<Person>(persons), 3);
 
-        foreach (var group in personGroups)
+        for (var index = 0; index < personGroups.Count; index++)
         {
-            Console.WriteLine(group);
+            Console.WriteLine($"Group {index}: " + personGroups[index]);
         }
 
     }
 }
-

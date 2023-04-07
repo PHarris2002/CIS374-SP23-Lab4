@@ -15,7 +15,6 @@ namespace Lab4
             }
         }
 
-        // TODO
         public char? EndingLetter
         {
             get
@@ -79,7 +78,7 @@ namespace Lab4
                     currentGroup.Persons.Add(person);
                 }
 
-                else if (person.Distance(person) <= distance)
+                else if (person.Distance(currentGroup[0]) <= distance)
                 {
                     currentGroup.Persons.Add(person);
                 }
@@ -87,11 +86,8 @@ namespace Lab4
                 else
                 {
                     personGroups.Add(currentGroup);
-
-                    var newGroup = new List<Person>
-                    {
-                        person
-                    };
+                    var newGroup = new List<Person>();
+                    newGroup.Add(person);
 
                     GeneratePersonGroups(newGroup, distance);
                 }
