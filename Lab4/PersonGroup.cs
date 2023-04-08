@@ -1,7 +1,5 @@
 ﻿
 
-using System.Runtime.InteropServices;
-
 namespace Lab4
 {
     public class PersonGroup
@@ -60,8 +58,6 @@ namespace Lab4
             return "[" + String.Join(", ", Persons) + "]";
         }
 
-
-        // TODO
         public static List<PersonGroup> GeneratePersonGroups(List<Person> persons, int distance)
         {
             //list for group lists
@@ -70,43 +66,36 @@ namespace Lab4
             //sort input list
             persons.Sort();
 
+            // Creates space for current group
             var currentGroup = new PersonGroup();
-            List<Person> addedPersons = new List<Person>();
-            List<Person> newPersons = new List<Person>();
 
             foreach (var person in persons)
             {
+                //if current group is empty, then add the person
                 if (currentGroup.Count == 0)
                 {
                     currentGroup.Persons.Add(person);
-                    addedPersons.Add(person);
                 }
 
+                //if current group isn't empty, check to see if the current person is within distance
                 else if (person.Distance(currentGroup[0]) <= distance)
                 {
+                    //if within distance, add person to the current group
                     currentGroup.Persons.Add(person);
-                    addedPersons.Add(person);
                 }
 
+                //otherwise, create new group for the pending persons
                 else
                 {
+                    //adds currentGroup to personGroups list
                     personGroups.Add(currentGroup);
-                    addedPersons.Add(person);
 
-                    foreach (var p in persons)
-                    {
-                        if (addedPersons.Contains(p) == true)
-                        {
-                            continue;
-                        }
+                    //creates new group
+                    var newGroup = new PersonGroup();
 
-                        else
-                        {
-                            newPersons.Add(p);
-                        }
-                    }
-
-                    GeneratePersonGroups(newPersons, distance);
+                    //newGroup becomes the currentGroup; the new group is used in the next iteration
+                    currentGroup = newGroup;
+                    newGroup.Persons.Add(person);
                 }
             }
 
